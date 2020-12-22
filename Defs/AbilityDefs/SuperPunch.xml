@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<CPAbilities.CPAbilityDef>
+		<defName>CP_SuperPunch</defName>
+		<label>SuperPunch</label>
+		<description>SuperPunch.</description>
+		<skillRequirements>
+			<Melee>18</Melee>
+		</skillRequirements>
+		<gizmoTexPath>Things/Building/Linked/Sandbags_MenuIcon</gizmoTexPath>
+		<abilityCooldownTicks>180</abilityCooldownTicks>
+		<meleeDistRange>1.5</meleeDistRange>
+		<enemyTargetCount>1</enemyTargetCount>
+		<soundDefCast>Deflect_Metal</soundDefCast>
+		<abilityEffect>
+			<damageToApplyOnTarget>CP_SuperPunch</damageToApplyOnTarget>
+			<damageAmount>100</damageAmount>
+			<moteTextOnFail>Countered!</moteTextOnFail>
+			<moteTextOnSuccess>Success</moteTextOnSuccess>
+			<enemyMeleeSkillCounterChance>true</enemyMeleeSkillCounterChance>
+		</abilityEffect>
+	</CPAbilities.CPAbilityDef>
+	
+  <DamageDef Name="SuperPunchBase">
+    <defName>CP_SuperPunch</defName>
+    <label>SuperPunch</label>
+    <workerClass>DamageWorker_Blunt</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been beaten to death.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Bruise</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <overkillPctToDestroyPart>0.4~1.0</overkillPctToDestroyPart>
+    <buildingDamageFactor>1.5</buildingDamageFactor>
+    <bluntStunDuration>5.0</bluntStunDuration>
+    <bluntInnerHitChance>0.4</bluntInnerHitChance>
+    <bluntInnerHitDamageFractionToConvert>0.1~0.2</bluntInnerHitDamageFractionToConvert>
+    <bluntInnerHitDamageFractionToAdd>0.2~0.35</bluntInnerHitDamageFractionToAdd>
+    <bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+      <points>
+        <li>(1, 1)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToHeadCurve>
+    <bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+      <points>
+        <li>(1, 1)</li>
+      </points>
+    </bluntStunChancePerDamagePctOfCorePartToBodyCurve>
+  </DamageDef>
+</Defs>

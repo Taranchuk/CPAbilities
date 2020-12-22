@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<CPAbilities.CPAbilityDef>
+		<defName>CP_Discombobulate</defName>
+		<label>Discombobulate</label>
+		<description>Discombobulate.</description>
+		<skillRequirements>
+			<Melee>18</Melee>
+		</skillRequirements>
+		<gizmoTexPath>Things/Building/Linked/Sandbags_MenuIcon</gizmoTexPath>
+		<abilityCooldownTicks>180</abilityCooldownTicks>
+		<meleeDistRange>1.5</meleeDistRange>
+		<enemyTargetCount>1</enemyTargetCount>
+		<soundDefCast>Deflect_Metal</soundDefCast>
+		<abilityEffect>
+			<hediffToApplyOnTarget>CP_Discombobulate</hediffToApplyOnTarget>
+			<moteTextOnFail>Countered!</moteTextOnFail>
+			<moteTextOnSuccess>Success</moteTextOnSuccess>
+			<enemyMeleeSkillCounterChance>true</enemyMeleeSkillCounterChance>
+		</abilityEffect>
+	</CPAbilities.CPAbilityDef>
+	
+	<HediffDef>
+		<defName>CP_Discombobulate</defName>
+		<label>Discombobulate</label>
+		<labelNoun>Discombobulate</labelNoun>
+		<description>Discombobulate</description>
+		<isBad>false</isBad>
+		<hediffClass>CPAbilities.Stun</hediffClass>
+		<stages>
+			<li>
+				<label>Discombobulate</label>
+				<minSeverity>0</minSeverity>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<CPAbilities.CPAbilityDef>
+		<defName>CP_RipAndTear</defName>
+		<label>RipAndTear</label>
+		<description>RipAndTear.</description>
+		<skillRequirements>
+			<Melee>18</Melee>
+		</skillRequirements>
+		<gizmoTexPath>Things/Building/Linked/Sandbags_MenuIcon</gizmoTexPath>
+		<abilityCooldownTicks>180</abilityCooldownTicks>
+		<meleeDistRange>1.5</meleeDistRange>
+		<enemyTargetCount>1</enemyTargetCount>
+		<soundDefCast>Deflect_Metal</soundDefCast>
+		<abilityEffect>
+			<hediffToApplyOnTarget>CP_RipAndTear</hediffToApplyOnTarget>
+			<moteTextOnFail>Countered!</moteTextOnFail>
+			<moteTextOnSuccess>Success</moteTextOnSuccess>
+			<enemyMeleeSkillCounterChance>true</enemyMeleeSkillCounterChance>
+		</abilityEffect>
+	</CPAbilities.CPAbilityDef>
+	
+	<HediffDef>
+		<defName>CP_RipAndTear</defName>
+		<label>RipAndTear</label>
+		<labelNoun>RipAndTear</labelNoun>
+		<description>RipAndTear</description>
+		<hediffClass>CPAbilities.RipAndTear</hediffClass>
+		<stages>
+			<li>
+				<label>RipAndTear</label>
+				<minSeverity>0</minSeverity>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

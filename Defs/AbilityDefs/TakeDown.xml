@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<CPAbilities.CPAbilityDef>
+		<defName>CP_TakeDown</defName>
+		<label>TakeDown</label>
+		<description>TakeDown.</description>
+		<skillRequirements>
+			<Melee>10</Melee>
+		</skillRequirements>
+		<gizmoTexPath>Things/Building/Linked/Sandbags_MenuIcon</gizmoTexPath>
+		<abilityCooldownTicks>180</abilityCooldownTicks>
+		<meleeDistRange>1.5</meleeDistRange>
+		<enemyTargetCount>1</enemyTargetCount>
+		<soundDefCast>Deflect_Metal</soundDefCast>
+		<abilityEffect>
+			<hediffToApplyOnTarget>CP_TakeDown</hediffToApplyOnTarget>
+			<moteTextOnFail>Countered!</moteTextOnFail>
+			<moteTextOnSuccess>Success</moteTextOnSuccess>
+			<enemyMeleeSkillCounterChance>true</enemyMeleeSkillCounterChance>
+		</abilityEffect>
+	</CPAbilities.CPAbilityDef>
+
+	<HediffDef>
+		<defName>CP_TakeDown</defName>
+		<label>TakeDown</label>
+		<labelNoun>TakeDown</labelNoun>
+		<description>TakeDown</description>
+		<maxSeverity>1.0</maxSeverity>
+		<initialSeverity>1.0</initialSeverity>
+		<isBad>false</isBad>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.75</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>taken down</label>
+				<minSeverity>0</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.10</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	
+</Defs>

@@ -1,0 +1,7 @@
+c:\GAMES\Rimworld\Mods\CPAbilities\Assemblies\CQCTakedown.dll
+c:\GAMES\Rimworld\Mods\CPAbilities\Assemblies\CQCTakedown.pdb
+c:\GAMES\Rimworld\Mods\CPAbilities\Source\CQCTakedown\obj\Debug\CQCTakedown.csprojAssemblyReference.cache
+c:\GAMES\Rimworld\Mods\CPAbilities\Source\CQCTakedown\obj\Debug\CQCTakedown.csproj.CoreCompileInputs.cache
+c:\GAMES\Rimworld\Mods\CPAbilities\Source\CQCTakedown\obj\Debug\CQCTakedown.csproj.CopyComplete
+c:\GAMES\Rimworld\Mods\CPAbilities\Source\CQCTakedown\obj\Debug\CQCTakedown.dll
+c:\GAMES\Rimworld\Mods\CPAbilities\Source\CQCTakedown\obj\Debug\CQCTakedown.pdb
