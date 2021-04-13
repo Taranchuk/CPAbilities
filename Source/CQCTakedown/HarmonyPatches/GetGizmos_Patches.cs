@@ -50,7 +50,7 @@ namespace CPAbilities
 		
 		public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn_DraftController __instance)
 		{
-			if (!__instance.Drafted && Find.CurrentMap == null || Find.World == null || Find.World.renderer == null || Find.World.renderer.wantedMode == WorldRenderMode.Planet)
+			if (!__instance.Drafted || Find.World.renderer == null || Find.World.renderer.wantedMode == WorldRenderMode.Planet)
 			{
 				return;
 			}
