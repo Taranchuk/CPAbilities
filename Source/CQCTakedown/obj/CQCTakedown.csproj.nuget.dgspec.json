@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj": {}
+    "C:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj": {}
   },
   "projects": {
-    "c:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj": {
+    "C:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj",
+        "projectUniqueName": "C:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj",
         "projectName": "CQCTakedown",
-        "projectPath": "c:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj",
+        "projectPath": "C:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\CQCTakedown.csproj",
         "packagesPath": "C:\\Users\\Vova\\.nuget\\packages\\",
-        "outputPath": "c:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\obj\\",
+        "outputPath": "C:\\GAMES\\Rimworld\\Mods\\CPAbilities\\Source\\CQCTakedown\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [

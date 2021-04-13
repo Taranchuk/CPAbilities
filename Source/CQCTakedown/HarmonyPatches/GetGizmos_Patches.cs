@@ -37,6 +37,17 @@ namespace CPAbilities
 	[HarmonyPatch(typeof(Pawn_DraftController), "GetGizmos")]
 	public class Pawn_DraftController_GetGizmos_Patch
 	{
+		protected static TargetingParameters GetTargetingParameters()
+		{
+			return new TargetingParameters
+			{
+				canTargetAnimals = true,
+				canTargetHumans = true,
+				canTargetMechs = true,
+				canTargetPawns = true
+			};
+		}
+		
 		public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn_DraftController __instance)
 		{
 			if (!__instance.Drafted && Find.CurrentMap == null || Find.World == null || Find.World.renderer == null || Find.World.renderer.wantedMode == WorldRenderMode.Planet)
@@ -74,7 +85,12 @@ namespace CPAbilities
 						disabled = comp.CanUse(abilityDef),
 						action = delegate
                         {
-							comp.Use(abilityDef);
+							Find.Targeter.BeginTargeting(GetTargetingParameters(), delegate (LocalTargetInfo t)
+							{
+								comp.lastAbilityToUse = abilityDef;
+								var job = JobMaker.MakeJob(CPDefOf.CP_UseAbilityOnThing, t);
+								pawn.jobs.TryTakeOrderedJob(job);
+							}, pawn);
                         }
 					};
 					list.Add(item);

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>CP_UseAbilityOnThing</defName>
+    <driverClass>CPAbilities.JobDriver_UseAbilityOnThing</driverClass>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+</Defs>

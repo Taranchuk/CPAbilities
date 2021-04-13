@@ -37,9 +37,8 @@ namespace CPAbilities
 			return false;
 		}
 
-		public void Use(CPAbilityDef abilityDef)
+		public void UseOn(CPAbilityDef abilityDef, Pawn target)
         {
-			var target = GetMeleeEnemy(abilityDef);
 			if (target != null)
             {
 				var chance = GetChance(target, abilityDef);
@@ -69,44 +68,28 @@ namespace CPAbilities
 					}
 				}
 			}
+			this.lastAbilityToUse = null;
 		}
 
 		private float GetChance(Pawn enemyTarget, CPAbilityDef abilityDef)
         {
 			var chance = 0.5f;
-			if (abilityDef.abilityEffect.enemyMeleeSkillCounterChance)
+			if (abilityDef.abilityEffect != null && Pawn.skills != null && enemyTarget.skills != null && abilityDef.abilityEffect.enemyMeleeSkillCounterChance)
             {
 				var level = (Pawn.skills.GetSkill(SkillDefOf.Melee).Level - enemyTarget.skills.GetSkill(SkillDefOf.Melee).Level);
 				chance += level / 10f;
             }
 			return chance;
         }
-
-		private Pawn GetMeleeEnemy(CPAbilityDef abilityDef)
-        {
-			if (Pawn.mindState.meleeThreat != null && abilityDef.meleeDistRange >= Pawn.mindState.meleeThreat.Position.DistanceTo(Pawn.Position))
-            {
-				return Pawn.mindState.meleeThreat;
-            }
-			if (Pawn.mindState.enemyTarget is Pawn enemyPawn && abilityDef.meleeDistRange >= enemyPawn.Position.DistanceTo(Pawn.Position))
-			{
-				return enemyPawn;
-			}
-			var enemies = Pawn.Map.attackTargetsCache.GetPotentialTargetsFor(Pawn).Where(x => x.Thing is Pawn pawn && abilityDef.meleeDistRange >= x.Thing.Position.DistanceTo(Pawn.Position)).Select(x => x.Thing as Pawn);
-			if (enemies.Any())
-            {
-				return enemies.RandomElement();
-            }
-			return null;
-		}
-
         public CompProperties_CPAbilities Props => this.props as CompProperties_CPAbilities;
 		public Pawn Pawn => this.parent as Pawn;
 		public Dictionary<CPAbilityDef, int> lastAbilityCountDown = new Dictionary<CPAbilityDef, int>();
+		public CPAbilityDef lastAbilityToUse;
         public override void PostExposeData()
         {
             base.PostExposeData();
 			Scribe_Collections.Look(ref lastAbilityCountDown, "lastAbilityCountDown", LookMode.Def, LookMode.Value, ref cPAbilityDefKeys, ref intValues);
+			Scribe_Defs.Look(ref lastAbilityToUse, "lastAbilityToUse");
 		}
 
 		private List<CPAbilityDef> cPAbilityDefKeys;

@@ -25,5 +25,6 @@ namespace CPAbilities
         public float meleeDistRange;
         public IntRange enemyTargetCount;
         public AbilityEffect abilityEffect;
+        public JobDef CP_UseAbilityOnThing;
     }
 }

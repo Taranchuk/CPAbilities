@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Commands\Command_CPAbility.cs" />
     <Compile Include="Comps\CompCPAbilities.cs" />
+    <Compile Include="CPDefOf.cs" />
     <Compile Include="HarmonyPatches\GetGizmos_Patches.cs" />
-    <Compile Include="AbilityDef.cs" />
+    <Compile Include="CPAbilityDef.cs" />
     <Compile Include="Hediffs\Stun.cs" />
     <Compile Include="Hediffs\RipAndTear.cs" />
+    <Compile Include="Jobs\JobDriver_UseAbilityOnThing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
