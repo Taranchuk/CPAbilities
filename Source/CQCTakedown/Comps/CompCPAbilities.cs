@@ -37,6 +37,14 @@ namespace CPAbilities
 			return false;
 		}
 
+		private HashSet<DamageDef> randomInjuries = new HashSet<DamageDef>
+		{
+			DamageDefOf.Crush,
+			DamageDefOf.Blunt,
+			DamageDefOf.Stab,
+			DamageDefOf.Scratch,
+			DamageDefOf.Bite
+		};
 		public void UseOn(CPAbilityDef abilityDef, Pawn target)
         {
 			if (target != null)
@@ -44,15 +52,60 @@ namespace CPAbilities
 				var chance = GetChance(target, abilityDef);
 				if (Rand.Chance(chance))
                 {
-					if (abilityDef.abilityEffect.hediffToApplyOnTarget != null)
-					{
-						target.health.AddHediff(abilityDef.abilityEffect.hediffToApplyOnTarget);
-					}
-					if (abilityDef.abilityEffect.damageToApplyOnTarget != null)
+					if (abilityDef.abilityEffect != null)
                     {
-						var damageInfo = new DamageInfo(abilityDef.abilityEffect.damageToApplyOnTarget, abilityDef.abilityEffect.damageAmount, 0, -1, Pawn);
-						target.TakeDamage(damageInfo);
-                    }
+						if (abilityDef.abilityEffect.hediffToApplyOnTarget != null)
+						{
+							target.health.AddHediff(abilityDef.abilityEffect.hediffToApplyOnTarget);
+						}
+						if (abilityDef.abilityEffect.damageToApplyOnTarget != null)
+						{
+							var damageInfo = new DamageInfo(abilityDef.abilityEffect.damageToApplyOnTarget, abilityDef.abilityEffect.damageAmount, 0, -1, Pawn);
+							target.TakeDamage(damageInfo);
+						}
+
+						if (abilityDef.abilityEffect.targetBodyPartsToDestroy.HasValue)
+                        {
+							var destroyCount = abilityDef.abilityEffect.targetBodyPartsToDestroy.Value.RandomInRange;
+							for (var i = 0; i < destroyCount; i++)
+                            {
+								List<BodyPartRecord> list = (from x in target.RaceProps.body.AllParts where !target.health.hediffSet.PartIsMissing(x) 
+															 && x.coverage > 0.1f select x).ToList<BodyPartRecord>();
+								if (list.Count == 0)
+								{
+									continue;
+								}
+								BodyPartRecord bodyPartRecord;
+								if (GenCollection.TryRandomElement<BodyPartRecord>(list, out bodyPartRecord))
+								{
+									var missingBodyPart = HediffMaker.MakeHediff(HediffDefOf.MissingBodyPart, target, bodyPartRecord);
+									target.health.AddHediff(missingBodyPart);
+								}
+							}
+                        }
+
+						if (abilityDef.abilityEffect.targetBodyPartsToDamage.HasValue)
+						{
+							var damageCount = abilityDef.abilityEffect.targetBodyPartsToDamage.Value.RandomInRange;
+							for (var i = 0; i < damageCount; i++)
+							{
+								List<BodyPartRecord> list = (from x in target.RaceProps.body.AllParts
+															 where !target.health.hediffSet.PartIsMissing(x) && x.coverage > 0.1f
+															 select x).ToList<BodyPartRecord>();
+								if (list.Count == 0)
+								{
+									continue;
+								}
+								BodyPartRecord bodyPartRecord;
+								if (GenCollection.TryRandomElement<BodyPartRecord>(list, out bodyPartRecord))
+								{
+									var injury = new DamageInfo(randomInjuries.RandomElement(), abilityDef.abilityEffect.targetBodyPartsDamageRange.RandomInRange, 0, -1f, this.parent, bodyPartRecord);
+									target.TakeDamage(injury);
+								}
+							}
+						}
+					}
+
 					this.lastAbilityCountDown[abilityDef] = Find.TickManager.TicksAbs;
 					abilityDef.soundDefCast?.PlayOneShotOnCamera();
 					if (!abilityDef.abilityEffect?.moteTextOnSuccess.NullOrEmpty() ?? false)

@@ -14,7 +14,10 @@
 		<enemyTargetCount>1</enemyTargetCount>
 		<soundDefCast>Deflect_Metal</soundDefCast>
 		<abilityEffect>
-			<hediffToApplyOnTarget>CP_RipAndTear</hediffToApplyOnTarget>
+			<targetBodyPartsToDestroy>1~1</targetBodyPartsToDestroy>
+			<targetBodyPartsToDamage>3~5</targetBodyPartsToDamage>
+			<targetBodyPartsDamageRange>50~200</targetBodyPartsDamageRange>
+			
 			<moteTextOnFail>Countered!</moteTextOnFail>
 			<moteTextOnSuccess>Success</moteTextOnSuccess>
 			<enemyMeleeSkillCounterChance>true</enemyMeleeSkillCounterChance>

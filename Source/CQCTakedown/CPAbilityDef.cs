@@ -15,6 +15,10 @@ namespace CPAbilities
         public string moteTextOnFail;
         public string moteTextOnSuccess;
         public bool enemyMeleeSkillCounterChance;
+
+        public IntRange? targetBodyPartsToDestroy;
+        public IntRange? targetBodyPartsToDamage;
+        public FloatRange targetBodyPartsDamageRange;
     }
     public class CPAbilityDef : Def
     {
